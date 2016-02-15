@@ -5,6 +5,7 @@ import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 /**
  * Created by zhaoxuliang on 16/2/13.
@@ -12,6 +13,12 @@ import java.lang.reflect.Method;
  * user:spring hibernate
  */
 public class CGLibProxy implements MethodInterceptor {
+
+    private static CGLibProxy instance = new CGLibProxy();
+
+    public static CGLibProxy getInstance() {
+        return instance;
+    }
 
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
@@ -33,5 +40,27 @@ public class CGLibProxy implements MethodInterceptor {
         System.out.println("after");
     }
 
+    public static void test1() {
+        CGLibProxy cgLibProxy = new CGLibProxy();
+        HelloFacade helloProxy = cgLibProxy.getProxy(HelloFacadeImpl.class);
+        helloProxy.say("jack");
+    }
+
+    public static void test2() {
+        HelloFacade helloProxy = CGLibProxy.getInstance().getProxy(HelloFacadeImpl.class);
+        helloProxy.say("jack");
+    }
+
+    /**
+     * 代理没有接口的类，OK
+     */
+    public static void test3(){
+        HelloNoFacadeImpl helloProxy = CGLibProxy.getInstance().getProxy(HelloNoFacadeImpl.class);
+        helloProxy.say("jack");
+    }
+
+    public static void main(String[] args) {
+        test3();
+    }
 
 }

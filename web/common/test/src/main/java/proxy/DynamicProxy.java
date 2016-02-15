@@ -31,17 +31,15 @@ public class DynamicProxy implements InvocationHandler {
         System.out.println("after");
     }
 
+    @SuppressWarnings("unchecked")
     public <T> T getProxy() {
         return (T) Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
     }
 
     public static void test1() {
         HelloFacade helloFacade = new HelloFacadeImpl();
-
         DynamicProxy dynamicProxy = new DynamicProxy(helloFacade);
-
         HelloFacade helloProxy = (HelloFacade) Proxy.newProxyInstance(helloFacade.getClass().getClassLoader(), helloFacade.getClass().getInterfaces(), dynamicProxy);
-
         helloProxy.say("jack");
     }
 
@@ -51,8 +49,16 @@ public class DynamicProxy implements InvocationHandler {
         helloProxy.say("Jack");
     }
 
+    /**
+     * 代理没有接口的类，报错
+     */
+    public static void test3(){
+        DynamicProxy dynamicProxy = new DynamicProxy(new HelloNoFacadeImpl());
+        HelloNoFacadeImpl helloProxy = dynamicProxy.getProxy();
+        helloProxy.say("Jack");
+    }
 
     public static void main(String[] args) {
-        test2();
+        test3();
     }
 }
