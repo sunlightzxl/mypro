@@ -69,6 +69,7 @@ public class HttpUtil {
 
     /**
      * cookie String转为Map
+     *
      * @param cookie
      * @return
      */
@@ -94,6 +95,7 @@ public class HttpUtil {
 
     /**
      * url参数转map
+     *
      * @param url
      * @return
      */
@@ -123,6 +125,7 @@ public class HttpUtil {
 
     /**
      * 组装url参数
+     *
      * @param urlPrefix
      * @param paramMap
      * @return
@@ -153,6 +156,7 @@ public class HttpUtil {
 
     /**
      * Html特殊字符转义
+     *
      * @param str
      * @return
      */
@@ -165,6 +169,7 @@ public class HttpUtil {
 
     /**
      * Html特殊字符解义
+     *
      * @param str
      * @return
      */

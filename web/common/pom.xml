@@ -7,6 +7,11 @@
     <groupId>org.mypro.web</groupId>
     <artifactId>common</artifactId>
     <version>1.0</version>
+    <packaging>pom</packaging>
 
+    <modules>
+        <module>daemon</module>
+        <module>test</module>
+    </modules>
 
 </project>
