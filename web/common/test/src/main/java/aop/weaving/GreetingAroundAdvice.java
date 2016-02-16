@@ -1,4 +1,4 @@
-package aop;
+package aop.weaving;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;

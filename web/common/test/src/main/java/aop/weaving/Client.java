@@ -1,4 +1,4 @@
-package aop;
+package aop.weaving;
 
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.context.ApplicationContext;

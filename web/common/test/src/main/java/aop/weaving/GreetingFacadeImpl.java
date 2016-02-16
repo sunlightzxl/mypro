@@ -1,4 +1,4 @@
-package aop;
+package aop.weaving;
 
 import org.springframework.stereotype.Component;
 
@@ -9,10 +9,8 @@ import org.springframework.stereotype.Component;
 public class GreetingFacadeImpl implements GreetingFacade {
     @Override
     public void sayHello(String name) {
-//        before();
         System.out.println("hello! " + name);
-//        after();
-        throw new RuntimeException("Error");
+//        throw new RuntimeException("Error");
     }
 
     @Deprecated

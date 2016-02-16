@@ -1,4 +1,4 @@
-package aop;
+package aop.weaving;
 
 /**
  * Created by zhaoxuliang on 16/2/15.
