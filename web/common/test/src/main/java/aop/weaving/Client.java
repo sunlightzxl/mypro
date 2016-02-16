@@ -38,6 +38,18 @@ public class Client {
         greetingFacade.sayHello("jack");
     }
 
+    public static void test4(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/spring/spring-aop.xml");
+        GreetingFacadeImpl greetingFacade = (GreetingFacadeImpl) context.getBean("greetingProxy");
+        greetingFacade.goodMorning("jack");
+    }
+
+    public static void test5(){
+        //将spring自动动态代理激活测试
+        //test3();
+        //test4();
+    }
+
 
     public static void main(String[] args) {
         test3();

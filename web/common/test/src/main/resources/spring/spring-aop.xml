@@ -10,6 +10,19 @@
     <!-- 扫描指定包 -->
     <context:component-scan base-package="aop"/>
 
+    <!-- 配置切面 -->
+    <!--
+    DefaultPointcutAdvisor:默认切面
+    NameMatchMethodPointcutAdvisor:根据方法名匹配的切面
+    StaticMethodMatcherPointcutAdvisor:用于匹配静态方法的切面
+    RegexpMethodPointcutAdvisor:正则匹配方法名的切面
+    -->
+    <bean id="greetingAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice" ref="greetingAroundAdvice"/>
+        <!-- 切点(正则表达式) -->
+        <property name="patterns" value="aop.weaving.GreetingFacadeImpl.good.*"/>
+    </bean>
+
     <!-- 配置代理 -->
     <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
         <!--
@@ -23,6 +36,7 @@
         </property>
         <property name="target" ref="greetingFacadeImpl"/>
         <!-- 过滤器，增强类 -->
+        <!--
         <property name="interceptorNames">
             <list>
                 <value>greetingAroundAdvice</value>
@@ -30,9 +44,24 @@
                 <value>greetingIntroAdvice</value>
             </list>
         </property>
+        -->
+        <!-- 切面 -->
+        <property name="interceptorNames" value="greetingAdvisor"/>
         <!-- 代理目标类，false:默认，jdk动态代理 true:CGLib代理 -->
         <property name="proxyTargetClass" value="true"/>
     </bean>
 
+    <!-- 自动动态代理:扫描类 -->
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames" value="*Impl"/>
+        <property name="interceptorNames" value="greetingAroundAdvice"/>
+        <!-- 是否对代理生成策略进行优化:如果类有接口用jdk代理否则用CGLib -->
+        <property name="optimize" value="true"/>
+    </bean>
+
+    <!-- 自动动态代理:扫描切面配置 -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+        <property name="optimize" value="true"/>
+    </bean>
 
 </beans>

@@ -13,13 +13,12 @@ public class GreetingFacadeImpl implements GreetingFacade {
 //        throw new RuntimeException("Error");
     }
 
-    @Deprecated
-    private void before() {
-        System.out.println("before");
+    public void goodMorning(String name) {
+        System.out.println("good morning! " + name);
     }
 
-    @Deprecated
-    private void after() {
-        System.out.println("after");
+    public void goodNight(String name) {
+        System.out.println("good night! " + name);
     }
+
 }
