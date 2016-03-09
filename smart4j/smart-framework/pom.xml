@@ -40,6 +40,48 @@
             <version>1.7.7</version>
         </dependency>
 
+        <!-- mySql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.33</version>
+        </dependency>
+
+        <!-- jackson may be can fastjson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.4.4</version>
+        </dependency>
+
+        <!-- apache commons lang -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.3.2</version>
+        </dependency>
+
+        <!-- apache commons collections -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.0</version>
+        </dependency>
+
+        <!-- apache commons dbUtils -->
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>1.6</version>
+        </dependency>
+
+        <!-- apache dbcp -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+
     </dependencies>
 
 
