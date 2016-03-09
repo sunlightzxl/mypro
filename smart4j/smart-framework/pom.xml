@@ -6,7 +6,7 @@
 
     <groupId>org.mypro.smart4j</groupId>
     <artifactId>smart-framework</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <dependencies>
         <!-- servlet -->
@@ -45,6 +45,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.33</version>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- jackson may be can fastjson -->
