@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 /**
  * Created by zhaoxuliang on 16/1/15.
@@ -101,6 +102,27 @@ public class DateUtil {
             return null;
         }
         return new Date(date.getTime() + (SECOND_OF_ONE_DAY));
+    }
+
+    /**
+     * 以23:59:59.999 填充时间格式的 HH:mm:ss.SSS
+     *
+     * @param date
+     * @return
+     */
+    public static Date completeDateTimeEnd(Date date){
+        if(date==null){
+            return null;
+        }
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss.SSS");
+        Pattern pattern = Pattern.compile("^[0]{2}(:[0]{2}){2}\\.[0]{3}$");
+        if(!pattern.matcher(df.format(date)).matches()){
+            return date;
+        }
+        long dateTime = date.getTime();
+        //86399999 = 24*60*60*1000-1
+        Date result = new Date(dateTime + 86399999);
+        return result;
     }
 
 }
